@@ -41,11 +41,17 @@
 
 .sidebar-nav {
     padding-top: 20px;
+    color: var(--sidebar-text) !important;
 }
 
 .sidebar-nav ul {
     list-style: none;
     padding-left: 0;
+    color: var(--sidebar-text) !important;
+}
+
+.sidebar-nav li {
+    color: var(--sidebar-text) !important;
 }
 
 .sidebar-nav a {
@@ -54,6 +60,12 @@
     display: block;
     border-left: 3px solid transparent;
     transition: all 0.3s ease;
+}
+
+/* Fix for collapsible sidebar plugin */
+.sidebar-nav .collapsible-header,
+.sidebar-nav .collapsible-content a {
+    color: var(--sidebar-text) !important;
 }
 
 .sidebar-nav a:hover {
