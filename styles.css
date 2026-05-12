@@ -33,39 +33,51 @@
     opacity: 0.9;
 }
 
-/* Sidebar */
-.app-sub-side {
-    background-color: var(--sidebar-bg) !important;
-    width: 280px !important;
+/* Sidebar - Force dark theme with light text */
+#app .sidebar,
+.app-sub-side,
+.sidebar-nav,
+[for="app-sub-side"] .sidebar {
+    background-color: #2c3e50 !important;
+    color: #ecf0f1 !important;
 }
 
-.sidebar-nav {
-    padding-top: 20px;
-    color: var(--sidebar-text) !important;
+#app .sidebar a,
+.app-sub-side a,
+.sidebar-nav a,
+[for="app-sub-side"] .sidebar a,
+.collapsible-header,
+.collapsible-content,
+.collapsible-content a,
+.collapsible-content li {
+    color: #ecf0f1 !important;
+    background-color: transparent !important;
 }
 
+#app .sidebar ul,
+.app-sub-side ul,
 .sidebar-nav ul {
-    list-style: none;
-    padding-left: 0;
-    color: var(--sidebar-text) !important;
-}
-
-.sidebar-nav li {
-    color: var(--sidebar-text) !important;
+    list-style: none !important;
+    padding-left: 0 !important;
+    color: #ecf0f1 !important;
 }
 
 .sidebar-nav a {
-    color: var(--sidebar-text) !important;
-    padding: 8px 15px;
-    display: block;
-    border-left: 3px solid transparent;
-    transition: all 0.3s ease;
+    padding: 8px 15px !important;
+    display: block !important;
+    border-left: 3px solid transparent !important;
+    transition: all 0.3s ease !important;
 }
 
-/* Fix for collapsible sidebar plugin */
-.sidebar-nav .collapsible-header,
-.sidebar-nav .collapsible-content a {
-    color: var(--sidebar-text) !important;
+.sidebar-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-left-color: var(--secondary-color) !important;
+}
+
+.sidebar-nav a.active {
+    background-color: rgba(52, 152, 219, 0.2) !important;
+    border-left-color: var(--secondary-color) !important;
+    font-weight: 600 !important;
 }
 
 .sidebar-nav a:hover {
