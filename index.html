@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networking Knowledge Base</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/highlight.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapsible@4.4.1/dist/sidebar.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div class="site-header">
+            <h1>Networking Knowledge Base</h1>
+            <p class="subtitle">From Core Networking to Cloud Routing & Tunneling</p>
+        </div>
+    </div>
+    
+    <!-- Docsify Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/emoji.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapsible@4.4.1/dist/docsify-sidebar-collapsible.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    
+    <!-- Mermaid Configuration -->
+    <script>
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'default',
+            flowchart: { useMaxWidth: true },
+            sequence: { useMaxWidth: true }
+        });
+        
+        // Hook into docsify's done event to render mermaid
+        window.$docsify = {
+            el: '#app',
+            repo: '',
+            loadSidebar: true,
+            homepage: 'index.md',
+            subMaxLevel: 3,
+            search: {
+                depth: 4,
+                placeholder: 'Search...',
+                noData: 'No results!',
+                namespace: 'networking-kb'
+            },
+            plugins: [
+                function(hook, vm) {
+                    hook.doneEach(function() {
+                        mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+                    });
+                }
+            ]
+        };
+    </script>
+    
+    <!-- Google Analytics (optional - add your ID) -->
+    <!-- <script>
+        window.$docsify = window.$docsify || {};
+        window.$docsify.ga = 'UA-XXXXXX-X';
+    </script> -->
+</body>
+</html>
