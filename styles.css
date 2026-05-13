@@ -724,6 +724,19 @@ section.cover {
 [data-theme="dark"] .markdown-section table td {
     color: var(--cloud) !important;
     border-bottom-color: var(--slate) !important;
+    background: transparent !important;
+}
+
+[data-theme="dark"] .markdown-section table tbody tr {
+    background: transparent !important;
+}
+
+[data-theme="dark"] .markdown-section table tbody tr:nth-child(even) {
+    background: rgba(10, 240, 206, 0.04) !important;
+}
+
+[data-theme="dark"] .markdown-section table tbody tr:nth-child(even) td {
+    color: var(--cloud) !important;
 }
 
 [data-theme="dark"] .markdown-section table tbody tr:hover {
