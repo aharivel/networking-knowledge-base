@@ -131,6 +131,7 @@ CNI plugins receive information via environment variables:
 
 **Flannel Backends:**
 
+
 | Backend | Description | Performance | Requirements |
 |---------|-------------|------------|--------------|
 | **vxlan** | VXLAN encapsulation | ⭐⭐⭐⭐ | Kernel 3.7+ |
@@ -176,6 +177,7 @@ spec:
 ```
 
 **Pros and Cons:**
+
 
 | Pros | Cons |
 |------|------|
@@ -229,6 +231,7 @@ spec:
 ```
 
 **Calico Components:**
+
 
 | Component | Purpose |
 |-----------|---------|
@@ -306,6 +309,7 @@ spec:
 
 **Pros and Cons:**
 
+
 | Pros | Cons |
 |------|------|
 | ✅ Native routing (no overlay by default) | ❌ More complex setup |
@@ -359,6 +363,7 @@ spec:
 ```
 
 **Cilium Components:**
+
 
 | Component | Purpose |
 |-----------|---------|
@@ -441,6 +446,7 @@ spec:
 
 **Pros and Cons:**
 
+
 | Pros | Cons |
 |------|------|
 | ✅ eBPF-based (high performance) | ❌ Complex technology (eBPF) |
@@ -499,6 +505,7 @@ kubectl get pods -n kube-system | grep weave
 ```
 
 **Pros and Cons:**
+
 
 | Pros | Cons |
 |------|------|

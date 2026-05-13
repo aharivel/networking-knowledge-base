@@ -108,6 +108,7 @@ Prefix Length = Number of network bits (left to right)
 - Subnet increment: 64
 
 **Step 4: List subnets**
+
 | Subnet | Network Address | First Usable | Last Usable | Broadcast |
 |--------|-----------------|--------------|-------------|-----------|
 | 1 | 192.168.1.0/26 | 192.168.1.1 | 192.168.1.62 | 192.168.1.63 |

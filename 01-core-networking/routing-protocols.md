@@ -115,6 +115,7 @@ graph TD
 
 **Area Types**:
 
+
 | Type | Description | Use Case |
 |------|-------------|----------|
 | **Backbone (Area 0)** | Required, connects all other areas | Core of OSPF network |
@@ -715,6 +716,7 @@ router bgp 65001
 ### BGP Troubleshooting
 
 **Common BGP Issues**:
+
 
 | Issue | Symptom | Possible Cause | Solution |
 |-------|---------|----------------|----------|

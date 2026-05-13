@@ -28,6 +28,7 @@ Network protocols are standardized rules and conventions that enable devices to 
 - `OPTIONS`: Get supported methods
 
 **HTTP/1.1 vs HTTP/2 vs HTTP/3:**
+
 | Version | Year | Key Features |
 |---------|------|--------------|
 | HTTP/1.1 | 1997 | Persistent connections, chunked transfer |
@@ -41,6 +42,7 @@ Network protocols are standardized rules and conventions that enable devices to 
 **Port**: 53 (TCP for zone transfers, UDP for queries)
 
 **Record Types:**
+
 | Type | Name | Purpose | Example |
 |------|------|---------|---------|
 | A | Address | IPv4 address | `example.com → 192.0.2.1` |
@@ -109,6 +111,7 @@ sequenceDiagram
 ```
 
 **DHCP Options:**
+
 | Option | Description | Example |
 |--------|-------------|---------|
 | 1 | Subnet Mask | 255.255.255.0 |
@@ -244,6 +247,7 @@ Client                          Server
 ```
 
 **IPv4 vs IPv6:**
+
 | Feature | IPv4 | IPv6 |
 |---------|------|------|
 | Address Size | 32 bits | 128 bits |
@@ -258,6 +262,7 @@ Client                          Server
 **Purpose**: Diagnostic and control messages
 
 **Types:**
+
 | Type | Code | Description |
 |------|------|-------------|
 | 0 | 0 | Echo Reply (ping response) |
@@ -317,6 +322,7 @@ arp -n  # Linux/Mac
 ```
 
 **Ethernet Types:**
+
 | Type (hex) | Protocol |
 |------------|----------|
 | 0x0800 | IPv4 |

@@ -81,6 +81,7 @@ sequenceDiagram
 - Load balancers, firewalls, routers
 
 **Performance:**
+
 | Metric | Kernel Stack | DPDK |
 |--------|--------------|------|
 | Latency | ~50-100 μs | ~1-5 μs |
@@ -157,6 +158,7 @@ sudo ./my_dpdk_app --lcore 0-3 --master lcore 0 --pci-whitelist 0000:01:00.0
 - **Completion Queue (CQ)**: Notifications for completed operations
 
 **Verbs API:**
+
 | Verb | Description |
 |------|-------------|
 | `ibv_post_send` | Post send request |
@@ -195,6 +197,7 @@ sudo ./my_dpdk_app --lcore 0-3 --master lcore 0 --pci-whitelist 0000:01:00.0
 - **Drop-in replacement** for standard sockets
 
 **Performance Comparison:**
+
 | Stack | Latency | Throughput | CPU Usage |
 |-------|---------|------------|-----------|
 | Linux Kernel | ~50-100 μs | ~10-20 Gbps | High |

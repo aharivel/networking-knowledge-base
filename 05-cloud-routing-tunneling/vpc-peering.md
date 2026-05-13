@@ -535,6 +535,7 @@ aws ec2 accept-vpc-peering-connection \
 ### Network ACL Example
 
 **VPC A Network ACL (allow return traffic):**
+
 | Rule # | Type | Protocol | Port Range | Source | Destination | Action | Allow/Deny |
 |--------|------|----------|------------|--------|-------------|--------|------------|
 | 100 | Custom | TCP | 1024-65535 | 172.16.0.0/16 | 0.0.0.0/0 | ALLOW | ✅ |
@@ -641,6 +642,7 @@ gcloud compute instances describe my-vm --zone us-central1-a --format="value(net
 ### Cost Analysis
 
 **AWS Pricing (us-east-1 as of 2024):**
+
 | Item | Cost |
 |------|------|
 | Peering connection | $0.01 per hour per connection |

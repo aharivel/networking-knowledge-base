@@ -108,6 +108,7 @@ VXLAN Header:
 - **Jumbo frames**: 9000 bytes (recommended for VXLAN)
 
 **Advantages:**
+
 | Feature | Benefit |
 |---------|---------|
 | 24-bit VNI | Supports ~16M virtual networks |
@@ -116,6 +117,7 @@ VXLAN Header:
 | Standardized | Widely supported |
 
 **Disadvantages:**
+
 | Issue | Concern |
 |-------|---------|
 | Encapsulation overhead | Reduces effective MTU |
@@ -204,6 +206,7 @@ Geneve Header (minimum 8 bytes):
 **Port**: UDP 6081 (default)
 
 **Advantages over VXLAN:**
+
 | Feature | VXLAN | Geneve |
 |---------|-------|--------|
 | Extensibility | Limited | ✅ TLV options |

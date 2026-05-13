@@ -310,6 +310,7 @@ sequenceDiagram
 
 **mTLS Modes**:
 
+
 | Mode | Description | When to Use |
 |------|-------------|-------------|
 | **STRICT** | Always use mTLS | Production, internal services |
@@ -572,6 +573,7 @@ graph TD
 
 **Istio Components**:
 
+
 | Component | Purpose |
 |-----------|---------|
 | **Istiod** | Unified control plane (Pilot + Citadel + Galley) |
@@ -654,6 +656,7 @@ spec:
 
 **Istio Pros and Cons**:
 
+
 | Pros | Cons |
 |------|------|
 | ✅ Most feature-rich | ❌ Complex to install and configure |
@@ -701,6 +704,7 @@ graph TD
 
 **Linkerd Components**:
 
+
 | Component | Purpose |
 |-----------|---------|
 | **Control Plane** | Manages proxy configuration |
@@ -743,6 +747,7 @@ linkerd viz dashboard
 ```
 
 **Linkerd Pros and Cons**:
+
 
 | Pros | Cons |
 |------|------|
@@ -811,6 +816,7 @@ graph TD
 
 **Consul Connect Components**:
 
+
 | Component | Purpose |
 |-----------|---------|
 | **Consul Servers** | Store configuration and service catalog |
@@ -852,6 +858,7 @@ consul tls certs create -dc dc1
 ```
 
 **Consul Connect Pros and Cons**:
+
 
 | Pros | Cons |
 |------|------|
@@ -975,6 +982,7 @@ spec:
 ```
 
 **AWS App Mesh Pros and Cons**:
+
 
 | Pros | Cons |
 |------|------|

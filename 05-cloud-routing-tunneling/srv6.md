@@ -133,6 +133,7 @@ A **segment** is an IPv6 address that represents an instruction to be executed o
 
 **Segment Types**:
 
+
 | Segment Type | IPv6 Address Format | Instruction |
 |--------------|---------------------|-------------|
 | **Node Segment** | `LOCAL::n` or `FD00::n` | Process at this node |
@@ -372,6 +373,7 @@ An **SRv6 Locator** is a prefix allocated to a node or a set of nodes for Segmen
 
 **Locator Types**:
 
+
 | Type | Description | Prefix Format |
 |------|-------------|---------------|
 | **Node Locator** | Identifies a specific node | `LOCAL::FF:FE00:n` or global prefix |
@@ -402,6 +404,7 @@ An **SID** is a specific instruction encoded in an IPv6 address.
 - **Index-based**: SID = Locator + Index
 
 **SID Types**:
+
 
 | SID Type | Function | Encoding |
 |----------|----------|----------|

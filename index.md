@@ -12,6 +12,7 @@ This is a living knowledge base for networking concepts, protocols, and technolo
 
 The knowledge base is organized into **5 main sections**:
 
+
 | Section | Focus Area | Key Topics |
 |---------|-----------|------------|
 | **01: Core Networking** | Fundamentals | OSI Model, TCP/IP, Subnetting, DNS, DHCP |

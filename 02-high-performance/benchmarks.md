@@ -63,6 +63,7 @@ iperf3 -c <server_ip> -p 5201 -u -b 1G -t 60 -i 10
 ```
 
 **Common Options:**
+
 | Option | Description |
 |--------|-------------|
 | `-c <host>` | Client mode, connect to server |
@@ -145,6 +146,7 @@ nuttcp -i1 -T30 -j <server_ip>
 ```
 
 **Common Options:**
+
 | Option | Description |
 |--------|-------------|
 | `-S` | Server mode |
@@ -452,6 +454,7 @@ ab -n 1000 -c 10 -s 30 http://example.com/
 ```
 
 **Options:**
+
 | Option | Description |
 |--------|-------------|
 | `-n <requests>` | Number of requests |
@@ -527,6 +530,7 @@ wrk -t12 -c400 -d30s -s script.lua http://example.com
 ```
 
 **Options:**
+
 | Option | Description |
 |--------|-------------|
 | `-t <threads>` | Number of threads |
@@ -932,6 +936,7 @@ tshark -r capture.pcap -q -z io,stat,0
 ```
 
 **Common Filters:**
+
 | Filter | Description |
 |--------|-------------|
 | `tcp` | TCP packets only |

@@ -229,6 +229,7 @@ Offset  Field               Description
 - **Flexible resource allocation**
 
 **GPU SR-IOV Implementations:**
+
 | Vendor | Technology | Description |
 |--------|------------|-------------|
 | Intel | GVT-g | Graphics Virtualization Technology for GPUs |
@@ -433,6 +434,7 @@ ip a
 ```
 
 **VF Drivers by Vendor:**
+
 | Vendor | NIC Model | VF Driver |
 |--------|-----------|-----------|
 | Intel | X520, X550, X710, XXV710 | ixgbevf |
