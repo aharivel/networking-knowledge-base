@@ -3,64 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Networking Knowledge Base</title>
+    <title>NetLearn — Networking Knowledge Base</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/highlight.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapsible@4.4.1/dist/sidebar.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="app">
-        <div class="site-header">
-            <h1>Networking Knowledge Base</h1>
-            <p class="subtitle">From Core Networking to Cloud Routing & Tunneling</p>
+        <div class="loading-screen">
+            <div class="loading-icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <circle cx="24" cy="8" r="4" fill="#0af0ce"/>
+                    <circle cx="8" cy="36" r="4" fill="#0af0ce" opacity="0.6"/>
+                    <circle cx="40" cy="36" r="4" fill="#0af0ce" opacity="0.6"/>
+                    <line x1="24" y1="12" x2="10" y2="33" stroke="#0af0ce" stroke-width="1.5" opacity="0.4"/>
+                    <line x1="24" y1="12" x2="38" y2="33" stroke="#0af0ce" stroke-width="1.5" opacity="0.4"/>
+                    <line x1="12" y1="36" x2="36" y2="36" stroke="#0af0ce" stroke-width="1.5" opacity="0.4"/>
+                </svg>
+            </div>
+            <p>Loading NetLearn...</p>
         </div>
     </div>
-    
-    <!-- Docsify Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/emoji.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/highlight.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapsible@4.4.1/dist/docsify-sidebar-collapsible.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-    
-    <!-- Mermaid Configuration -->
+
+    <!-- Docsify config MUST be before docsify script -->
     <script>
-        mermaid.initialize({
-            startOnLoad: false,
-            theme: 'default',
-            flowchart: { useMaxWidth: true },
-            sequence: { useMaxWidth: true }
-        });
-        
-        // Hook into docsify's done event to render mermaid
         window.$docsify = {
             el: '#app',
+            name: 'NetLearn',
             repo: '',
             loadSidebar: true,
             homepage: 'index.md',
             subMaxLevel: 3,
+            auto2top: true,
             search: {
                 depth: 4,
-                placeholder: 'Search...',
-                noData: 'No results!',
-                namespace: 'networking-kb'
+                placeholder: '⌕ Search topics...',
+                noData: 'No results found.',
+                namespace: 'netlearn',
+                pathNamespaces: /^\//
+            },
+            markdown: {
+                renderer: {
+                    code: function(code, lang) {
+                        if (lang === 'mermaid') {
+                            return '<div class="mermaid">' + code + '</div>';
+                        }
+                        return this.origin.code.apply(this, arguments);
+                    }
+                }
             },
             plugins: [
                 function(hook, vm) {
                     hook.doneEach(function() {
-                        mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+                        if (typeof mermaid !== 'undefined') {
+                            mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+                        }
+                    });
+
+                    hook.afterEach(function(html) {
+                        return html;
                     });
                 }
             ]
         };
     </script>
-    
-    <!-- Google Analytics (optional - add your ID) -->
-    <!-- <script>
-        window.$docsify = window.$docsify || {};
-        window.$docsify.ga = 'UA-XXXXXX-X';
-    </script> -->
+
+    <!-- Docsify core -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-go.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#1a2744',
+                primaryTextColor: '#e0e6ed',
+                primaryBorderColor: '#0af0ce',
+                lineColor: '#3d5a80',
+                secondaryColor: '#0d1b2a',
+                tertiaryColor: '#112240',
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: '14px'
+            },
+            flowchart: { useMaxWidth: true, curve: 'basis' },
+            sequence: { useMaxWidth: true }
+        });
+    </script>
 </body>
 </html>
