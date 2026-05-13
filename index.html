@@ -27,6 +27,14 @@
         </div>
     </div>
 
+    <!-- Theme toggle: apply saved preference before paint to avoid flash -->
+    <script>
+        (function() {
+            var theme = localStorage.getItem('netlearn-theme') || 'light';
+            if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        })();
+    </script>
+
     <!-- Docsify config MUST be before docsify script -->
     <script>
         window.$docsify = {
@@ -62,8 +70,24 @@
                         }
                     });
 
-                    hook.afterEach(function(html) {
-                        return html;
+                    hook.ready(function() {
+                        var sidebar = document.querySelector('.sidebar');
+                        if (!sidebar) return;
+                        var btn = document.createElement('button');
+                        btn.className = 'theme-toggle';
+                        btn.setAttribute('aria-label', 'Toggle dark mode');
+                        btn.innerHTML = '<span class="toggle-icon"></span>';
+                        sidebar.insertBefore(btn, sidebar.firstChild);
+
+                        function applyTheme(theme) {
+                            document.documentElement.setAttribute('data-theme', theme);
+                            localStorage.setItem('netlearn-theme', theme);
+                        }
+
+                        btn.addEventListener('click', function() {
+                            var current = document.documentElement.getAttribute('data-theme');
+                            applyTheme(current === 'dark' ? 'light' : 'dark');
+                        });
                     });
                 }
             ]
