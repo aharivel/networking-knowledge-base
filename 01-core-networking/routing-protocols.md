@@ -199,7 +199,7 @@ stateDiagram-v2
     Full --> 2-Way: Adjacency lost
     
     state Full {
-        [*] --> Adjacency Established
+        [*] --> AdjacencyEstablished: Adjacency Established
     }
 ```
 

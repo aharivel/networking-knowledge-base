@@ -346,6 +346,8 @@ body {
     overflow-x: auto !important;
     border: 1px solid rgba(10, 240, 206, 0.1) !important;
     position: relative !important;
+    white-space: pre !important;
+    word-wrap: normal !important;
 }
 
 .markdown-section pre::before {
@@ -365,9 +367,15 @@ body {
     border: none !important;
     padding: 0 !important;
     color: var(--cloud) !important;
-    font-size: 0.85rem !important;
-    line-height: 1.65 !important;
+    font-size: 0.82rem !important;
+    line-height: 1.6 !important;
     border-radius: 0 !important;
+    font-variant-ligatures: none !important;
+    font-feature-settings: "liga" 0, "calt" 0 !important;
+    -webkit-font-smoothing: antialiased !important;
+    letter-spacing: 0 !important;
+    tab-size: 4 !important;
+    white-space: pre !important;
 }
 
 /* Prism token colors — cool palette */
