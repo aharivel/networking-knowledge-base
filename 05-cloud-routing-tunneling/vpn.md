@@ -263,19 +263,19 @@ An SA is a set of security parameters agreed upon between two IPSec peers:
 
 ```
 Security Association Database (SAD):
-+----------------+----------------+----------------+----------------+
-|  SPI           |  Destination    |  Protocol      |  Algorithm     |
-|  (Security     |  IP            |  (ESP/AH)      |  (AES-256-GCM) |
-|  Parameter     |                |                |                |
-|  Index)        |                |                |                |
-+----------------+----------------+----------------+----------------+
++----------------+----------------+----------------+-----------------+
+|  SPI           |  Destination   |  Protocol      |  Algorithm      |
+|  (Security     |  IP            |  (ESP/AH)      |  (AES-256-GCM)  |
+|  Parameter     |                |                |                 |
+|  Index)        |                |                |                 |
++----------------+----------------+----------------+-----------------+
 
 Policy Database (SPD):
-+----------------+----------------+----------------+----------------+
-|  Source IP     |  Destination   |  Protocol      |  Action        |
-|                |  IP            |                |  (Encrypt/     |
-|                |                |                |   Bypass/Drop) |
-+----------------+----------------+----------------+----------------+
++----------------+----------------+----------------+-----------------+
+|  Source IP     |  Destination   |  Protocol      |  Action         |
+|                |  IP            |                |  (Encrypt/      |
+|                |                |                |   Bypass/Drop)  |
++----------------+----------------+----------------+-----------------+
 ```
 
 ### IPSec Configuration Example (StrongSwan)
@@ -668,10 +668,10 @@ curl ifconfig.me  # Should show server's IP
 Creates a **virtual IP router** - operates at Layer 3 (IP).
 
 ```
-+--------+     +--------+     +--------+
-| Client |-----| Server |-----| Internet|
-|  tun0  |     |  tun0  |     |  eth0   |
-|10.8.0.2|     |10.8.0.1|     +--------+
++--------+     +--------+     +----------+
+| Client |-----| Server |-----| Internet |
+|  tun0  |     |  tun0  |     |  eth0    |
+|10.8.0.2|     |10.8.0.1|     +----------+
 +--------+     +--------+
 ```
 
@@ -685,10 +685,10 @@ Creates a **virtual IP router** - operates at Layer 3 (IP).
 Creates a **virtual Ethernet bridge** - operates at Layer 2 (Ethernet).
 
 ```
-+--------+     +--------+     +--------+
-| Client |-----| Server |-----| Internet|
-|  tap0  |     |  tap0  |     |  eth0   |
-+--------+     +--------+
++--------+     +--------+     +----------+
+| Client |-----| Server |-----| Internet |
+|  tap0  |     |  tap0  |     |  eth0    |
++--------+     +--------+     +----------+
     |               |
     +----- Bridge ---+
 ```

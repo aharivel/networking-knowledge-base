@@ -192,7 +192,7 @@ Each virtqueue is a **ring buffer** with three components:
 Descriptor Table:
 +----------------+----------------+----------------+
 | addr (64-bit)  | len (32-bit)   | flags (16-bit) |
-|                |                | next (16-bit) |
+|                |                | next (16-bit)  |
 +----------------+----------------+----------------+
 
 Available Ring:
@@ -237,11 +237,11 @@ The **VirtIO Block Device** provides virtual disk/block storage.
 
 ```
 VirtIO Block Request:
-+----------------+----------------+----------------+
-| Type (1 byte)  | Reserved (3)   | Sector (64-bit)|
-+----------------+----------------+----------------+
-| Sector Count (32-bit) | Reserved (12) |
-+----------------+----------------+----------------+
++------------------+------------------+------------------+
+| Type (1 byte)    | Reserved (3)     | Sector (64-bit)  |
++------------------+------------------+------------------+
+| Sector Count (32-bit)              | Reserved (12)    |
++------------------------------------+------------------+
 
 Request Types:
 - VIRTIO_BLK_T_IN = 0 (Read)
@@ -270,25 +270,25 @@ VirtIO defines **transport mechanisms** for how data is exchanged between guest 
 
 **Configuration Space Layout**:
 ```
-+----------------+----------------+----------------+
-| Device ID (16) | Vendor ID (16) |                |
-+----------------+----------------+----------------+
-| Command (16)   | Status (16)    |                |
-+----------------+----------------+----------------+
-| Class Code (8) | Subclass (8)   | Prog IF (8)    |
-+----------------+----------------+----------------+
-| BIST (8)       | Header Type (8)| Latency Timer  |
-| Cache Line Size|                |                |
-+----------------+----------------+----------------+
-| BARs (Base Address Registers) |                |
-+----------------+----------------+----------------+
-| Capabilities Pointer |                          |
-+----------------+----------------+----------------+
-| VirtIO Specific: |                                |
-|   Device Features (32-bit) |                        |
-|   Guest Features (32-bit) |                         |
-|   Device Config (variable) |                       |
-+----------------+----------------+----------------+
++------------------+------------------+------------------+
+| Device ID (16)   | Vendor ID (16)   |                  |
++------------------+------------------+------------------+
+| Command (16)     | Status (16)      |                  |
++------------------+------------------+------------------+
+| Class Code (8)   | Subclass (8)     | Prog IF (8)      |
++------------------+------------------+------------------+
+| BIST (8)         | Header Type (8)  | Latency Timer    |
+| Cache Line Size  |                  |                  |
++------------------+------------------+------------------+
+| BARs (Base Address Registers)       |                  |
++------------------+------------------+------------------+
+| Capabilities Pointer                |                  |
++------------------+------------------+------------------+
+| VirtIO Specific:                                       |
+|   Device Features (32-bit)                             |
+|   Guest Features (32-bit)                              |
+|   Device Config (variable)                             |
++------------------+------------------+------------------+
 ```
 
 ---
@@ -493,7 +493,7 @@ sequenceDiagram
 **Packed Virtqueue Descriptor**:
 ```
 +----------------+----------------+----------------+
-| id (16-bit)   | len (16-bit)   | flags (16-bit) |
+| id (16-bit)    | len (16-bit)   | flags (16-bit) |
 +----------------+----------------+----------------+
 
 Flags:
@@ -553,13 +553,13 @@ qemu-system-x86_64 \
 
 ```
 +----------------+----------------+----------------+
-| Guest VM      | QEMU           | Kernel        |
+| Guest VM       | QEMU           | Kernel         |
 +----------------+----------------+----------------+
-| VirtIO Driver | Userspace     | vhost-net     |
-|               |                | Kernel Module |
+| VirtIO Driver  | Userspace      | vhost-net      |
+|                |                | Kernel Module  |
 +----------------+----------------+----------------+
-| Virtqueues    | QEMU Manages  | Kernel Manages|
-|               | (Slow)        | (Fast)        |
+| Virtqueues     | QEMU Manages   | Kernel Manages |
+|                | (Slow)         | (Fast)         |
 +----------------+----------------+----------------+
 
 Without vhost:
@@ -612,10 +612,10 @@ ovs-vsctl add-port br0 dpdkvhostuser0 \
 
 ```
 +----------------+----------------+----------------+
-| Guest VM      | DPDK App       | Kernel        |
+| Guest VM       | DPDK App       | Kernel         |
 +----------------+----------------+----------------+
-| DPDK Poll Mode| Userspace     | vhost-user    |
-| Driver        |                | Kernel Module |
+| DPDK Poll Mode | Userspace      | vhost-user     |
+| Driver         |                | Kernel Module  |
 +----------------+----------------+----------------+
 
 - DPDK app polls virtqueues directly
