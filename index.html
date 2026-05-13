@@ -68,6 +68,62 @@
                         if (typeof mermaid !== 'undefined') {
                             mermaid.init(undefined, document.querySelectorAll('.mermaid'));
                         }
+
+                        // Line rate calculator
+                        var calc = document.getElementById('line-rate-calc');
+                        if (calc) {
+                            function formatPps(n) {
+                                if (n >= 1e9) return (n / 1e9).toFixed(2) + ' Gpps';
+                                if (n >= 1e6) return (n / 1e6).toFixed(2) + ' Mpps';
+                                if (n >= 1e3) return (n / 1e3).toFixed(2) + ' Kpps';
+                                return n.toFixed(0) + ' pps';
+                            }
+                            function formatBits(bps) {
+                                if (bps >= 1e9) return (bps / 1e9).toFixed(2) + ' Gbps';
+                                if (bps >= 1e6) return (bps / 1e6).toFixed(2) + ' Mbps';
+                                if (bps >= 1e3) return (bps / 1e3).toFixed(2) + ' Kbps';
+                                return bps.toFixed(0) + ' bps';
+                            }
+                            function calculate() {
+                                var speed = parseFloat(document.getElementById('link-speed').value);
+                                var unit = parseFloat(document.getElementById('speed-unit').value);
+                                var pktSize = parseInt(document.getElementById('pkt-size').value);
+                                if (isNaN(speed) || isNaN(pktSize) || speed <= 0 || pktSize < 64) {
+                                    document.getElementById('result-pps').textContent = '—';
+                                    document.getElementById('result-throughput').textContent = '—';
+                                    document.getElementById('result-efficiency').textContent = '—';
+                                    document.getElementById('result-wire-size').textContent = '—';
+                                    document.getElementById('calc-breakdown').innerHTML = '';
+                                    return;
+                                }
+                                var linkBps = speed * unit;
+                                var overhead = 20;
+                                var wireSize = pktSize + overhead;
+                                var wireBits = wireSize * 8;
+                                var pps = linkBps / wireBits;
+                                var payloadBps = pps * pktSize * 8;
+                                var efficiency = (pktSize / wireSize) * 100;
+                                document.getElementById('result-pps').textContent = formatPps(pps);
+                                document.getElementById('result-throughput').textContent = formatBits(payloadBps);
+                                document.getElementById('result-efficiency').textContent = efficiency.toFixed(1) + '%';
+                                document.getElementById('result-wire-size').textContent = wireSize + ' bytes';
+                                document.getElementById('calc-breakdown').innerHTML =
+                                    '<span class="hl">Formula:</span> pps = link_speed / (wire_size × 8)<br>' +
+                                    '<span class="hl">Wire size:</span> ' + pktSize + 'B (packet) + 7B (preamble) + 1B (SFD) + 12B (IFG) = <span class="hl">' + wireSize + ' bytes</span><br>' +
+                                    '<span class="hl">Calculation:</span> ' + formatBits(linkBps) + ' / (' + wireSize + ' × 8) = ' + formatBits(linkBps) + ' / ' + wireBits + ' bits = <span class="hl">' + formatPps(pps) + '</span>';
+                            }
+                            document.getElementById('link-speed').addEventListener('input', calculate);
+                            document.getElementById('pkt-size').addEventListener('input', calculate);
+                            document.getElementById('speed-unit').addEventListener('change', calculate);
+                            var presets = document.querySelectorAll('.pkt-presets button[data-size]');
+                            presets.forEach(function(btn) {
+                                btn.addEventListener('click', function() {
+                                    document.getElementById('pkt-size').value = this.getAttribute('data-size');
+                                    calculate();
+                                });
+                            });
+                            calculate();
+                        }
                     });
 
                     hook.ready(function() {

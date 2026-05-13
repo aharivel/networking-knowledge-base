@@ -23,12 +23,12 @@
       <div class="input-row">
         <input type="number" id="pkt-size" value="64" min="64" max="9216" step="1" />
         <div class="pkt-presets">
-          <button onclick="setPktSize(64)">64</button>
-          <button onclick="setPktSize(128)">128</button>
-          <button onclick="setPktSize(256)">256</button>
-          <button onclick="setPktSize(512)">512</button>
-          <button onclick="setPktSize(1518)">1518</button>
-          <button onclick="setPktSize(9000)">9K</button>
+          <button data-size="64">64</button>
+          <button data-size="128">128</button>
+          <button data-size="256">256</button>
+          <button data-size="512">512</button>
+          <button data-size="1518">1518</button>
+          <button data-size="9000">9K</button>
         </div>
       </div>
     </div>
@@ -210,72 +210,6 @@
 }
 .calc-breakdown .hl { color: #0af0ce; font-weight: 600; }
 </style>
-
-<script>
-function setPktSize(size) {
-  document.getElementById('pkt-size').value = size;
-  calculate();
-}
-
-function formatNumber(n) {
-  if (n >= 1e9) return (n / 1e9).toFixed(2) + ' Gpps';
-  if (n >= 1e6) return (n / 1e6).toFixed(2) + ' Mpps';
-  if (n >= 1e3) return (n / 1e3).toFixed(2) + ' Kpps';
-  return n.toFixed(0) + ' pps';
-}
-
-function formatBits(bps) {
-  if (bps >= 1e9) return (bps / 1e9).toFixed(2) + ' Gbps';
-  if (bps >= 1e6) return (bps / 1e6).toFixed(2) + ' Mbps';
-  if (bps >= 1e3) return (bps / 1e3).toFixed(2) + ' Kbps';
-  return bps.toFixed(0) + ' bps';
-}
-
-function calculate() {
-  var speed = parseFloat(document.getElementById('link-speed').value);
-  var unit = parseFloat(document.getElementById('speed-unit').value);
-  var pktSize = parseInt(document.getElementById('pkt-size').value);
-
-  if (isNaN(speed) || isNaN(pktSize) || speed <= 0 || pktSize < 64) {
-    document.getElementById('result-pps').textContent = '—';
-    document.getElementById('result-throughput').textContent = '—';
-    document.getElementById('result-efficiency').textContent = '—';
-    document.getElementById('result-wire-size').textContent = '—';
-    document.getElementById('calc-breakdown').innerHTML = '';
-    return;
-  }
-
-  var linkBps = speed * unit;
-  // Ethernet overhead: 7 preamble + 1 SFD + 4 FCS + 12 IFG = 24 bytes
-  // But FCS (4B) is usually included in the packet size convention (64B min includes FCS)
-  // So additional overhead on wire = 7 (preamble) + 1 (SFD) + 12 (IFG) = 20 bytes
-  var overhead = 20;
-  var wireSize = pktSize + overhead;
-  var wireBits = wireSize * 8;
-  var pps = linkBps / wireBits;
-  var payloadBps = pps * pktSize * 8;
-  var efficiency = (pktSize / wireSize) * 100;
-
-  document.getElementById('result-pps').textContent = formatNumber(pps);
-  document.getElementById('result-throughput').textContent = formatBits(payloadBps);
-  document.getElementById('result-efficiency').textContent = efficiency.toFixed(1) + '%';
-  document.getElementById('result-wire-size').textContent = wireSize + ' bytes';
-
-  document.getElementById('calc-breakdown').innerHTML =
-    '<span class="hl">Formula:</span> pps = link_speed / (wire_size × 8)<br>' +
-    '<span class="hl">Wire size:</span> ' + pktSize + 'B (packet) + 7B (preamble) + 1B (SFD) + 12B (IFG) = <span class="hl">' + wireSize + ' bytes</span><br>' +
-    '<span class="hl">Calculation:</span> ' + formatBits(linkBps) + ' / (' + wireSize + ' × 8) = ' + formatBits(linkBps) + ' / ' + wireBits + ' bits = <span class="hl">' + formatNumber(pps) + '</span>';
-}
-
-// Run on load and on any input change
-document.addEventListener('DOMContentLoaded', calculate);
-if (document.getElementById('link-speed')) {
-  document.getElementById('link-speed').addEventListener('input', calculate);
-  document.getElementById('pkt-size').addEventListener('input', calculate);
-  document.getElementById('speed-unit').addEventListener('change', calculate);
-  calculate();
-}
-</script>
 
 ---
 
