@@ -8,12 +8,15 @@
   - [Subnetting & CIDR](01-core-networking/subnetting.md)
   - [Network Protocols](01-core-networking/protocols.md)
   - [Routing Protocols](01-core-networking/routing-protocols.md)
+  - [VLANs](01-core-networking/vlans.md)
+  - [Linux Bonding](01-core-networking/linux-bonding.md)
 
 ---
 
 - **02 · High Performance**
   - [Kernel Bypass](02-high-performance/kernel-bypass.md)
   - [eBPF](02-high-performance/ebpf.md)
+  - [Cisco TRex](02-high-performance/trex.md)
   - [Benchmarks & Tools](02-high-performance/benchmarks.md)
 
 ---
@@ -30,6 +33,7 @@
   - [SR-IOV](04-vm-networking/sriov.md)
   - [VM Packet Walk](04-vm-networking/vm-packet-walk.md)
   - [Virtio Networking](04-vm-networking/virtio.md)
+  - [TAP Interfaces](04-vm-networking/tap-interfaces.md)
 
 ---
 
