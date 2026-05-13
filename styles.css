@@ -603,9 +603,7 @@ section.cover {
    Theme Toggle Button
    ============================================ */
 .theme-toggle {
-    position: absolute;
-    top: 1.25rem;
-    right: 1rem;
+    display: block;
     width: 40px;
     height: 22px;
     background: var(--slate);
@@ -613,6 +611,7 @@ section.cover {
     border-radius: 11px;
     cursor: pointer;
     padding: 0;
+    margin: 0 1.25rem 0.75rem;
     z-index: 10;
     transition: background 0.25s, border-color 0.25s;
 }

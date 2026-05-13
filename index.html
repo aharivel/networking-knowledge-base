@@ -77,7 +77,12 @@
                         btn.className = 'theme-toggle';
                         btn.setAttribute('aria-label', 'Toggle dark mode');
                         btn.innerHTML = '<span class="toggle-icon"></span>';
-                        sidebar.insertBefore(btn, sidebar.firstChild);
+                        var appName = sidebar.querySelector('.app-name-link');
+                        if (appName && appName.parentNode) {
+                            appName.parentNode.insertBefore(btn, appName.nextSibling);
+                        } else {
+                            sidebar.appendChild(btn);
+                        }
 
                         function applyTheme(theme) {
                             document.documentElement.setAttribute('data-theme', theme);
