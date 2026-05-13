@@ -17,6 +17,7 @@
   - [Kernel Bypass](02-high-performance/kernel-bypass.md)
   - [eBPF](02-high-performance/ebpf.md)
   - [Cisco TRex](02-high-performance/trex.md)
+  - [Line Rate Calculator](02-high-performance/line-rate-calculator.md)
   - [Benchmarks & Tools](02-high-performance/benchmarks.md)
 
 ---
