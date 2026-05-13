@@ -10,8 +10,8 @@
     --steel: #3d5a80;
     --silver: #8b9dc3;
     --cloud: #c5cee0;
-    --snow: #e8ecf2;
-    --white: #f4f6fa;
+    --snow: #dce2ed;
+    --white: #e8ecf2;
     --pure-white: #ffffff;
     --accent: #0af0ce;
     --accent-dim: rgba(10, 240, 206, 0.15);
@@ -592,6 +592,7 @@ body {
 /* Fix docsify default body background */
 body {
     background: var(--white) !important;
+    color: #2a3650 !important;
 }
 
 section.cover {
